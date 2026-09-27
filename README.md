@@ -2,7 +2,7 @@
 
 The public information website for Worlds with You, an interactive fiction product in development by Exoself Systems.
 
-**Website:** https://worldswithyou.com · **Contact:** info@worldswithyou.com
+**Website:** https://worldswithyou.com · **Contact:** support@worldswithyou.com
 
 ## Development
 
