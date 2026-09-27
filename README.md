@@ -28,6 +28,6 @@ Sources: [GitHub custom domains](https://docs.github.com/en/pages/configuring-a-
 
 ## Content and scope
 
-The website describes a product in development. It makes no claims about funding, incorporation dates, customer numbers, revenue, launch dates, or startup-program acceptance. The privacy notice and terms cover this information website only and must be revisited if forms, analytics, accounts, or app functionality are introduced.
+The website describes a product in development. It makes no claims about funding, incorporation dates, customer numbers, revenue, launch dates, or startup-program acceptance. `public/privacy/` and `public/terms/` publish the Worlds with You app privacy policy and terms of service, which also cover this website. Their source of truth is `docs/legal/` in the private product repository; edit them there and regenerate these pages. Revisit them if the website adds forms, analytics, or accounts.
 
 Original artwork provenance is recorded in `ASSETS.md`. This public repository contains only the marketing website; product source and internal company documents are not part of it.
