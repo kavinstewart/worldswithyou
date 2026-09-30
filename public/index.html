@@ -1,80 +1,794 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Worlds with You — Stories you step into</title>
-  <meta name="description" content="Worlds with You is a new mobile entertainment experience blending cinematic stories, meaningful choices, and AI characters who remember. In development by Exoself Systems.">
-  <meta name="theme-color" content="#131020">
-  <link rel="canonical" href="https://worldswithyou.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Worlds with You — Stories you step into">
-  <meta property="og:description" content="A story is only the beginning. Discover a new kind of interactive fiction, in development by Exoself Systems.">
-  <meta property="og:url" content="https://worldswithyou.com/">
-  <meta property="og:site_name" content="Worlds with You">
-  <meta name="twitter:card" content="summary">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/styles.css">
-  <link rel="preload" as="image" href="assets/threshold.webp">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Worlds with You","url":"https://worldswithyou.com/","email":"support@worldswithyou.com","description":"A mobile interactive fiction product in development by Exoself Systems.","parentOrganization":{"@type":"Organization","name":"Exoself Systems","url":"https://exoselfsystems.com/"},"sameAs":["https://github.com/kavinstewart/worldswithyou"]}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Worlds with You — love stories that remember you</title>
+<meta name="description" content="Short, cinematic romance stories you step into. Watch a scene, choose what to say, then keep texting him. He remembers what happened between you.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="canonical" href="https://worldswithyou.com/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Worlds with You">
+<meta property="og:title" content="Worlds with You — love stories that remember you">
+<meta property="og:description" content="Short, cinematic romance stories you step into. Watch a scene, choose what to say, then keep texting him. He remembers what happened between you.">
+<meta property="og:url" content="https://worldswithyou.com/">
+<meta property="og:image" content="https://worldswithyou.com/assets/media/wes-portrait.webp">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Worlds with You","url":"https://worldswithyou.com/","email":"support@worldswithyou.com","parentOrganization":{"@type":"Organization","name":"Exoself Systems","url":"https://exoselfsystems.com/"}}</script>
+<link rel="preload" href="assets/fonts/jost-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/newsreader-wght-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Jost";src:url(assets/fonts/jost-var-latin.woff2) format("woff2");font-weight:300 500;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Newsreader";src:url(assets/fonts/newsreader-wght-latin.woff2) format("woff2");font-weight:400 500;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+/* metric-matched fallbacks keep the swap from shifting layout */
+@font-face{font-family:"Jost fb";src:local("Helvetica Neue"),local("Arial");size-adjust:96%;ascent-override:104%;descent-override:36%}
+@font-face{font-family:"Newsreader fb";src:local("Georgia"),local("Times New Roman");size-adjust:94%;ascent-override:98%;descent-override:30%}
+
+:root{
+  --paper:#FFFFFF; --ink:#111111; --shadow:#3A302A; --golden:#E9B872; --red:#C9302A;
+  --imsg-blue:#0A6CE8; --imsg-grey:#E9E9EB; --imsg-meta:#6B6B70; --imsg-line:#C7C7CC;
+  --display:"Jost","Jost fb",sans-serif;
+  --text:"Newsreader","Newsreader fb",serif;
+  --sys:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;
+  --t-cover:clamp(2.5rem, 1.19rem + 5.9vw, 6.5rem);
+  --t-chapter:clamp(2.5rem, 1.1rem + 6.5vw, 7rem);
+  --t-h2:clamp(2.125rem, 1.43rem + 2.86vw, 4rem);
+  --t-h3:clamp(1.375rem, 1.28rem + .38vw, 1.625rem);
+  --t-lede:clamp(1.25rem, 1.16rem + .38vw, 1.5rem);
+  --t-body:clamp(1.125rem, 1.1rem + .1vw, 1.1875rem);
+  --t-label:1rem;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;--s9:96px;--s10:128px;
+  --gutter:24px; --max:1320px;
+  --r-button:2px; --r-bubble:18px; --r-device:40px;
+  --focus:var(--ink);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 var(--t-body)/1.55 var(--text);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+::selection{background:var(--golden);color:var(--ink)}
+a{color:inherit;text-decoration-line:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+p{margin:0}
+figure{margin:0}
+.wrap{width:min(100% - 2*var(--gutter), var(--max));margin-inline:auto}
+.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:var(--s4);top:-60px;background:var(--ink);color:var(--paper);padding:12px 16px;font:400 1rem var(--display);z-index:10}
+.skip:focus{top:var(--s3)}
+
+/* ---------- type roles ---------- */
+.cover,.chapter,.h2{font-family:var(--display);font-weight:300;margin:0;font-kerning:normal}
+.cover{font-size:var(--t-cover);line-height:1;letter-spacing:-.01em;text-transform:uppercase}
+.chapter{font-size:var(--t-chapter);line-height:.95;letter-spacing:-.01em;text-transform:uppercase}
+.chapter .stop,.cover .stop{color:var(--red)}
+.h2{font-size:var(--t-h2);line-height:1.05;letter-spacing:-.005em}
+.h3{font:400 var(--t-h3)/1.2 var(--display);margin:0}
+.lede{font-size:var(--t-lede);line-height:1.45}
+.label{font:400 var(--t-label)/1.35 var(--display);letter-spacing:.01em;color:var(--shadow)}
+.body-max{max-width:34em}
+
+/* ---------- header ---------- */
+.site-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);height:60px}
+.wordmark{font:400 1.25rem/1 var(--display);letter-spacing:.01em;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.head-cta{font:400 var(--t-label)/1 var(--display);display:inline-flex;align-items:center;min-height:44px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 var(--s5);background:var(--ink);color:var(--paper);font:400 1.0625rem/1.2 var(--display);letter-spacing:.01em;text-decoration:none;border-radius:var(--r-button);transition:background-color .15s}
+.btn:hover{background:var(--red)}
+.btn:active{background:var(--shadow)}
+
+/* ---------- frames + loops ---------- */
+.frame{position:relative;margin:0;background:var(--shadow)}
+.frame img,.frame video{width:100%;height:100%;object-fit:cover}
+.cap{margin-top:var(--s3)}
+.pp{position:absolute;top:var(--s3);right:var(--s3);width:44px;height:44px;border:1px solid rgba(255,255,255,.75);background:rgba(17,17,17,.4);border-radius:var(--r-button);cursor:pointer;display:grid;place-items:center;padding:0;z-index:2;--focus:var(--golden)}
+.pp:hover{background:rgba(17,17,17,.72)}
+.pp::before{content:"";width:12px;height:14px;border-inline:4px solid #fff}
+.pp[data-state="paused"]::before{width:0;height:0;border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent #fff;margin-left:3px}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,1fr)}
+.hero-text{display:contents}
+.hero-img{grid-row:1;grid-column:1;aspect-ratio:4/5;margin-inline:calc(-1*var(--gutter))}
+.hero-img img{object-position:50% 0%}
+.hero-img::after{content:"";position:absolute;inset:40% 0 0 0;background:linear-gradient(to top, rgba(17,17,17,.62), rgba(17,17,17,0))}
+.hero .cover{grid-row:1;grid-column:1;align-self:end;position:relative;z-index:1;color:#fff;padding-bottom:var(--s5)}
+.hero .lede{grid-row:3;margin-top:var(--s6);max-width:26em}
+.hero-cta{grid-row:2;padding-block:var(--s5) 0;display:grid;gap:var(--s3);justify-items:start}
+.hero-cta .label{max-width:30em}
+
+/* ---------- chapters ---------- */
+.ch{padding-block:var(--s9) 0}
+.ch-head p{margin-top:var(--s5)}
+.scene-frames{margin-top:var(--s7)}
+.scene-frames .a{width:72%}
+.scene-frames .b{width:58%;margin:var(--s6) 0 0 auto}
+.scene-frames .frame{aspect-ratio:9/16}
+.scene-note{margin-top:var(--s5)}
+
+/* ---------- the moment (static, complete by default) ---------- */
+.moment{position:relative;margin-top:var(--s8)}
+.stage{position:relative}
+.film{position:relative;aspect-ratio:4/5;overflow:hidden;background:#0E0C0B}
+.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.film-title{position:absolute;inset:auto 0 0 0;padding:var(--s9) var(--gutter) calc(var(--s8) + 40px);color:#fff;background:linear-gradient(to top, rgba(17,17,17,.7), rgba(17,17,17,0))}
+.film-title p{margin-top:var(--s4);max-width:22em;font-size:var(--t-lede);line-height:1.4}
+.film .pp{top:var(--s4);right:var(--s4)}
+.side{display:none}
+.phone-wrap{position:relative;margin:-64px auto 0;width:min(340px, 100% - 2*var(--gutter));z-index:2}
+.phone-label{display:none}
+
+.phone{position:relative;height:720px;background:#fff;border-radius:var(--r-device);box-shadow:0 0 0 7px var(--ink), 0 40px 80px -30px rgba(58,48,42,.55);overflow:hidden;display:flex;flex-direction:column;font-family:var(--sys);color:#111}
+.sbar{flex:none;position:relative;display:flex;align-items:center;justify-content:space-between;height:34px;padding:4px 22px 0 30px;background:#F6F6F7;font:600 14px/1 var(--sys);color:#111}
+.sbar::before{content:"";position:absolute;left:50%;top:9px;width:86px;height:24px;margin-left:-43px;border-radius:12px;background:#0B0B0B}
+.sig{display:flex;align-items:center;gap:6px}
+.bars{display:flex;align-items:flex-end;gap:1.5px;height:10px}
+.bars i{width:3px;background:#111;border-radius:1px}
+.bars i:nth-child(1){height:4px}.bars i:nth-child(2){height:6px}.bars i:nth-child(3){height:8px}.bars i:nth-child(4){height:10px}
+.batt{position:relative;width:22px;height:11px;border:1px solid rgba(17,17,17,.45);border-radius:3px;padding:1px}
+.batt::before{content:"";display:block;width:62%;height:100%;background:#111;border-radius:1.5px}
+.batt::after{content:"";position:absolute;right:-3.5px;top:3px;width:1.5px;height:4px;background:rgba(17,17,17,.45);border-radius:0 1px 1px 0}
+.ph-head{flex:none;display:flex;align-items:center;justify-content:center;position:relative;padding:2px 16px 7px;background:#F6F6F7;border-bottom:1px solid #E2E2E5}
+.ph-back{position:absolute;left:18px;top:50%;width:12px;height:12px;border-left:2.5px solid var(--imsg-blue);border-bottom:2.5px solid var(--imsg-blue);transform:translateY(-50%) rotate(45deg)}
+.who{display:grid;justify-items:center;gap:3px}
+.av{width:38px;height:38px;border-radius:50%;background:linear-gradient(#A5A5AB,#85858B);color:#fff;display:grid;place-items:center;font:500 18px/1 var(--sys)}
+.nm{font:400 12px/1.2 var(--sys);color:#111}
+.nm span,.av span{display:none}
+.nm .n0,.av .n0{display:inline}
+.phone:has(#say-fries:checked) :is(.nm,.av) .n0,
+.phone:has(#say-name:checked) :is(.nm,.av) .n0{display:none}
+.phone:has(#say-fries:checked) :is(.nm,.av) .n1{display:inline}
+.phone:has(#say-name:checked) :is(.nm,.av) .n2{display:inline}
+
+.say{flex:1;min-height:0;display:flex;flex-direction:column;margin:0}
+.thread{flex:1;display:flex;flex-direction:column;padding:12px 0 10px;overflow-y:auto;overscroll-behavior:contain;min-height:0;scrollbar-width:none}
+.thread::-webkit-scrollbar{display:none}
+.thread > :first-child{margin-top:auto}
+.thread:focus-visible{outline:3px solid var(--imsg-blue);outline-offset:-3px}
+.row{flex:none;display:flex;padding-inline:14px 16px;overflow:hidden}
+.row.me{justify-content:flex-end}
+.row + .row{margin-top:2px}
+.row.g{margin-top:8px}
+.b{position:relative;max-width:78%;padding:7px 13px 8px;border-radius:var(--r-bubble);font:400 17px/1.3 var(--sys);overflow-wrap:break-word}
+.me .b{background:var(--imsg-blue);color:#fff}
+.him .b{background:var(--imsg-grey);color:#111}
+.tail .b::before,.tail .b::after{content:"";position:absolute;bottom:0;height:20px}
+.me.tail .b::before{right:-8px;width:20px;background:var(--imsg-blue);border-bottom-left-radius:15px}
+.me.tail .b::after{right:-10px;width:10px;background:#fff;border-bottom-left-radius:10px}
+.him.tail .b::before{left:-8px;width:20px;background:var(--imsg-grey);border-bottom-right-radius:15px}
+.him.tail .b::after{left:-10px;width:10px;background:#fff;border-bottom-right-radius:10px}
+.status{justify-content:flex-end;font:400 11px/1.3 var(--sys);color:var(--imsg-meta);padding-top:3px}
+.sys-line{justify-content:center;font:400 13px/1.3 var(--sys);color:var(--imsg-meta);padding-top:10px;text-align:center}
+.typing .b{display:flex;gap:4px;padding:12px 14px}
+.typing .b i{width:8px;height:8px;border-radius:50%;background:#8E8E93}
+.typing,.thread > .status,.out .status{display:none}
+
+/* composer: choices, input field, keyboard (all inside the phone) */
+.composer{flex:none;background:#fff}
+.sheet{padding:6px 10px 2px}
+.sheet fieldset{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.sheet legend{float:left;width:100%;text-align:center;font:600 12px/1.25 var(--sys);color:var(--imsg-meta);padding:0 0 2px}
+.opt{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 15px;border:1.5px solid var(--imsg-blue);border-radius:22px;font:400 16px/1.2 var(--sys);color:var(--imsg-blue);cursor:pointer;background:#fff;transition:background-color .12s;white-space:nowrap}
+.opt:hover{background:#F2F2F4}
+.opt:active{background:#E6E6EA}
+.opt input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.opt:has(input:focus-visible){outline:3px solid var(--imsg-blue);outline-offset:2px}
+.out{display:none}
+.again{display:none;margin:0 0 0 auto;min-height:44px;padding:0 18px;background:#fff;border:1.5px solid var(--imsg-blue);border-radius:22px;font:400 16px/1 var(--sys);color:var(--imsg-blue);cursor:pointer}
+.again:hover{background:#F2F2F4}
+.again:focus-visible{outline:3px solid var(--imsg-blue);outline-offset:2px}
+.say:has(input:checked) fieldset{display:none}
+.say:has(input:checked) .again{display:block}
+.say:has(#say-block:checked) .out-block,
+.say:has(#say-fries:checked) .out-fries,
+.say:has(#say-name:checked) .out-name{display:block}
+.out .typing{display:flex}
+
+.inbar{display:flex;align-items:flex-end;gap:8px;padding:7px 10px 7px}
+.plus{flex:none;position:relative;width:32px;height:32px;margin-bottom:1px;border-radius:50%;background:#E9E9EB}
+.plus::before,.plus::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:2px;margin:-1px 0 0 -7px;background:#7C7C82;border-radius:1px}
+.plus::after{transform:rotate(90deg)}
+.field{flex:1;position:relative;min-height:34px;padding:7px 38px 7px 13px;border:1px solid var(--imsg-line);border-radius:17px;font:400 16px/1.25 var(--sys);color:#111}
+.ph-t{position:absolute;left:13px;top:7px;color:#9A9AA0}
+.ft{display:none;overflow:hidden}
+.send{position:absolute;right:3px;bottom:3px;width:28px;height:28px;border-radius:50%;background:var(--imsg-blue);opacity:0}
+.send::before{content:"";position:absolute;left:50%;top:8px;width:8px;height:8px;margin-left:-5px;border-left:2.5px solid #fff;border-top:2.5px solid #fff;transform:rotate(45deg)}
+.send::after{content:"";position:absolute;left:50%;top:9px;width:2.5px;height:12px;margin-left:-1.25px;background:#fff;border-radius:1px}
+
+.kb{padding:8px 3px 0;background:#D1D4DA;display:grid;row-gap:10px;container-type:inline-size;user-select:none;-webkit-user-select:none}
+.kr{--kw:calc((100cqi - 45px) / 10);--kh:min(calc(var(--kw) * 1.36), 5svh);display:flex;gap:5px;justify-content:center}
+.kr > span,.kr .grp > span{flex:0 0 var(--kw);height:var(--kh);display:grid;place-items:center;background:#fff;border-radius:5px;box-shadow:0 1px 0 #898A8D;font:400 calc(var(--kh) * .6)/1 var(--sys);color:#111}
+.kr .fn{flex-basis:calc(var(--kw) * 1.3);background:#ABB1BA}
+.kr .fn svg{width:48%;height:auto}
+.r3{justify-content:space-between}
+.grp{display:flex;gap:5px}
+.kr .wide{flex-basis:calc(var(--kw) * 2.5 + 5px);font-size:calc(var(--kh) * .45)}
+.kr .space{flex:1 1 auto;font-size:calc(var(--kh) * .45)}
+.home{display:block;width:36%;height:5px;margin:4px auto 8px;border-radius:3px;background:#111}
+
+@media (prefers-reduced-motion: no-preference){
+  .say:has(#say-block:checked) .ft-block,
+  .say:has(#say-fries:checked) .ft-fries,
+  .say:has(#say-name:checked) .ft-name{display:block;animation:fill .75s both}
+  .say:has(input:checked) .ph-t{animation:ph-away .75s both}
+  .say:has(input:checked) .send{animation:send-btn .75s both}
+  .out .row.me{animation:send .26s .75s cubic-bezier(.2,.8,.2,1) both}
+  .out .status{display:flex;animation:delivered 1.35s .75s linear both}
+  .out .typing{animation:typing 1.1s 1.1s linear both}
+  .out .typing i{animation:dot 1s infinite ease-in-out}
+  .out .typing i:nth-child(2){animation-delay:.15s}
+  .out .typing i:nth-child(3){animation-delay:.3s}
+  .out .row.him,.out .sys-line{animation:arrive .28s 2.2s cubic-bezier(.2,.8,.2,1) both}
+  .out .sys-line{animation-delay:2.65s}
+  .out .row.typing{animation:typing 1.1s 1.1s linear both}
+}
+@media (prefers-reduced-motion: reduce){ .out .typing{display:none} }
+@keyframes fill{0%{opacity:0;max-height:0}4%,96%{opacity:1;max-height:6em}100%{opacity:0;max-height:0}}
+@keyframes ph-away{0%,99%{opacity:0}100%{opacity:1}}
+@keyframes send-btn{0%{opacity:0}4%,96%{opacity:1}100%{opacity:0}}
+@keyframes send{from{opacity:0;max-height:0;transform:translateY(10px) scale(.96)}to{opacity:1;max-height:14em}}
+@keyframes arrive{from{opacity:0;max-height:0;transform:translateY(8px)}to{opacity:1;max-height:14em}}
+@keyframes typing{0%{max-height:0;opacity:0}12%{max-height:4em;opacity:1}88%{max-height:4em;opacity:1}100%{max-height:0;opacity:0;margin:0}}
+@keyframes delivered{0%{max-height:0;opacity:0;padding:0}8%,85%{max-height:2em;opacity:1;padding-top:3px}100%{max-height:0;opacity:0;padding:0}}
+@keyframes dot{0%,60%,100%{opacity:.35;transform:none}30%{opacity:1;transform:translateY(-2px)}}
+
+.after-moment{padding-top:var(--s7)}
+.after-moment .body-max{margin-top:var(--s4)}
+
+/* ---------- conversation ---------- */
+.memory{display:grid;gap:var(--s6);margin-top:var(--s7)}
+.memory .frame{aspect-ratio:4/5}
+.memory .frame img{object-position:50% 62%}
+.mem-phone{max-width:340px;width:100%;justify-self:center}
+.mem-phone .phone{height:600px}
+.mem-phone .composer{padding-bottom:26px;position:relative}
+.mem-home{position:absolute;left:50%;bottom:8px;width:120px;height:5px;margin-left:-60px;border-radius:3px;background:#111}
+.mem-phone .thread{overflow:hidden;justify-content:flex-end}
+.mem-phone .thread > :first-child{margin-top:0}
+.mem-note{margin-top:16px;text-align:center}
+.mem-phone .when{text-align:center;font:400 13px/1.3 var(--sys);color:var(--imsg-meta);margin-bottom:10px}
+
+.diff{margin-top:var(--s9);display:grid;gap:0;border-top:1px solid var(--ink)}
+.diff > div{padding:var(--s7) 0;border-bottom:1px solid rgba(17,17,17,.2)}
+.diff p{margin-top:var(--s4);color:var(--shadow);max-width:34em}
+
+/* ---------- range: the shelf ---------- */
+.range{padding-top:var(--s10)}
+.range .body-max{margin-top:var(--s5)}
+.shelf-hint{margin-top:var(--s5)}
+.bookcase{margin-top:var(--s7);display:grid;grid-template-areas:"stage" "shelf";row-gap:var(--s6)}
+.cover-stage{grid-area:stage;display:grid;justify-items:center;align-items:end}
+.book{grid-area:1/1;width:min(264px, 70vw);aspect-ratio:2/3;display:flex;flex-direction:column;padding:22px 20px 18px 24px;background:var(--bg);color:var(--fg);
+  box-shadow:inset 5px 0 0 -2px rgba(0,0,0,.1), inset 12px 0 12px -12px rgba(0,0,0,.35), 0 30px 44px -30px rgba(58,48,42,.7)}
+.book[hidden]{display:none}
+.book .genre{font:400 .8125rem/1.2 var(--display);letter-spacing:.18em;text-transform:uppercase}
+.book .title{margin:auto 0;font-weight:300}
+.book .title span,.book .title small,.book .title b{display:block}
+.book .premise{font:400 1.125rem/1.45 var(--text)}
+.book .mark{margin-top:var(--s4);font:400 .75rem/1 var(--display);letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+/* seven colours and letterings, all inside the palette's family */
+.bk-slow{--bg:var(--golden);--fg:var(--ink)}
+.bk-second{--bg:#A5573E;--fg:#FBF3E6}
+.bk-dark{--bg:var(--ink);--fg:var(--golden)}
+.bk-town{--bg:#F1E4CC;--fg:var(--shadow)}
+.bk-regency{--bg:#D9A698;--fg:var(--shadow)}
+.bk-silver{--bg:var(--shadow);--fg:#D8D3CB}
+.bk-work{--bg:#ECE7DF;--fg:var(--ink)}
+.bk-slow .title{font:300 3.25rem/.92 var(--display);text-transform:uppercase;letter-spacing:-.01em}
+.bk-second .title{font:400 2.5rem/1.02 var(--text);letter-spacing:-.01em;border-top:1px solid currentColor;padding-top:var(--s4)}
+.bk-dark .title{font:300 1.75rem/1.5 var(--display);text-transform:uppercase;letter-spacing:.34em;text-align:center;border-block:1px solid currentColor;padding-block:var(--s4)}
+.bk-dark .genre,.bk-dark .premise,.bk-dark .mark{text-align:center}
+.bk-town .title{font:500 2.625rem/1 var(--text);text-align:center}
+.bk-town .title small{font:400 .8125rem/1 var(--display);letter-spacing:.24em;text-transform:uppercase;margin-bottom:var(--s3)}
+.bk-regency .title{font:400 2.375rem/1.05 var(--text);text-align:center}
+.bk-regency .title small{font:400 1.125rem/1.6 var(--text)}
+.bk-regency .genre,.bk-regency .premise,.bk-regency .mark{text-align:center}
+.bk-silver .title{font:300 2.875rem/.95 var(--display);text-transform:uppercase;letter-spacing:.02em}
+.bk-silver .title b{font:400 4rem/.9 var(--text);color:var(--golden);margin:.02em 0 .04em}
+.bk-work .title{font:500 2.75rem/.92 var(--display);text-transform:uppercase;letter-spacing:-.02em;border-bottom:3px solid currentColor;padding-bottom:var(--s3)}
+
+.shelf{grid-area:shelf;display:flex;align-items:flex-end;justify-content:center;gap:4px;padding-top:var(--s3);border-bottom:3px solid var(--ink)}
+.spine{flex:0 1 46px;min-width:44px;height:var(--h);margin:0;padding:14px 0;border:0;border-radius:1px 1px 0 0;background:var(--bg);color:var(--fg);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font:400 .875rem/1 var(--display);letter-spacing:.12em;text-transform:uppercase;
+  box-shadow:inset 3px 0 0 rgba(255,255,255,.16), inset -3px 0 0 rgba(0,0,0,.12);transition:transform .18s ease-out}
+.spine.bk-work,.spine.bk-town{box-shadow:inset 0 0 0 1px rgba(17,17,17,.14), inset -3px 0 0 rgba(0,0,0,.08)}
+.spine span{writing-mode:vertical-rl;max-height:calc(var(--h) - 28px);overflow:hidden;white-space:nowrap}
+.spine:hover{transform:translateY(-4px)}
+.spine[aria-pressed="true"]{transform:translateY(-12px)}
+.spine:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+/* ---------- faq ---------- */
+.faq{padding-top:var(--s10)}
+.faq-list{margin-top:var(--s6);border-top:1px solid var(--ink)}
+.faq details{border-bottom:1px solid rgba(17,17,17,.2)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:var(--s5);min-height:72px;padding:var(--s5) 0;font:400 var(--t-h3)/1.3 var(--display);cursor:pointer}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:16px;height:16px;background:linear-gradient(var(--ink),var(--ink)) center/16px 1.5px no-repeat, linear-gradient(var(--ink),var(--ink)) center/1.5px 16px no-repeat}
+.faq details[open] summary::after{background:linear-gradient(var(--ink),var(--ink)) center/16px 1.5px no-repeat}
+@media (hover:hover){.faq summary:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}}
+.faq .ans{padding:0 0 var(--s7);max-width:36em}
+.faq .ans p{line-height:1.6}
+
+/* ---------- cta ---------- */
+.cta{margin-top:var(--s10);background:var(--golden);padding-block:var(--s9)}
+.cta-note{margin-top:var(--s5);color:var(--ink)}
+.cta .btn{margin-top:var(--s6)}
+.cta :focus-visible{--focus:var(--ink)}
+
+/* ---------- footer ---------- */
+.foot{background:var(--shadow);color:#fff;padding-block:var(--s8) var(--s7);--focus:var(--golden)}
+.foot .wordmark{font-size:1.375rem}
+.foot p{margin-top:var(--s4);max-width:36em}
+.foot .disclose{font:400 .875rem/1.55 var(--display);color:#EDE6DD}
+.foot nav{margin-top:var(--s5);display:flex;flex-wrap:wrap;column-gap:var(--s5)}
+.foot nav a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;font:400 1rem var(--display)}
+.foot small{display:block;margin-top:var(--s5);font:400 var(--t-label)/1.4 var(--display);color:#fff}
+
+/* ---------- ≥ 900px ---------- */
+@media (min-width:900px){
+  :root{--gutter:48px}
+  .site-head{height:80px}
+  .wordmark{font-size:1.375rem}
+  .hero{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--s5);align-items:stretch;padding-top:0}
+  .hero-img{grid-column:1 / span 5;grid-row:1;margin:0;aspect-ratio:auto;height:min(calc(100svh - 104px), 860px);min-height:560px}
+  .hero-img::after{display:none}
+  .hero-img img{object-position:50% 20%}
+  .hero-text{display:block;grid-column:7 / span 6;grid-row:1;align-self:center}
+  .hero .cover{color:var(--ink);padding:0}
+  .hero .lede{margin-top:var(--s5)}
+  .hero-cta{padding-top:var(--s7)}
+  .ch{padding-top:var(--s10)}
+  .scene{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--s5);align-items:start}
+  .scene .ch-head{grid-column:1 / span 5;position:sticky;top:var(--s8)}
+  .scene-frames{grid-column:7 / span 6;margin-top:0;display:grid;grid-template-columns:repeat(6,1fr);column-gap:var(--s5)}
+  .scene-frames .a{grid-column:1 / span 4;width:auto}
+  .scene-frames .b{grid-column:4 / span 3;width:auto;margin-top:-30%;position:relative}
+  .scene-frames .b .frame{box-shadow:0 0 0 8px var(--paper)}
+  .scene-frames .a .cap{max-width:58%}
+  .moment{margin-top:var(--s10)}
+  .film{aspect-ratio:auto;height:min(92svh, 860px)}
+  .film-title{padding-inline:max(var(--gutter), (100% - var(--max))/2)}
+  .phone-wrap{margin:-240px 0 0 auto;right:max(var(--gutter), (100% - var(--max))/2);width:360px}
+  .phone{height:780px}
+  .after-moment{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--s5)}
+  .after-moment > *{grid-column:1 / span 6}
+  .memory{grid-template-columns:repeat(12,1fr);column-gap:var(--s5);align-items:center}
+  .memory .frame{grid-column:1 / span 5}
+  .mem-phone{grid-column:7 / span 5;justify-self:start;max-width:360px}
+  .diff > div{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--s5);align-items:baseline}
+  .diff h3{grid-column:1 / span 5}
+  .diff p{grid-column:7 / span 6;margin-top:0}
+  .range-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--s5);align-items:end}
+  .range-grid > .range-copy{grid-column:1 / span 4;align-self:center}
+  .range-grid > .bookcase{grid-column:6 / span 7}
+  .bookcase{margin-top:0;grid-template-areas:"shelf stage";grid-template-columns:auto auto;justify-content:start;column-gap:var(--s6);row-gap:0;border-bottom:3px solid var(--ink)}
+  .shelf{border-bottom:0;gap:6px;justify-content:start}
+  .spine{flex-basis:50px;height:calc(var(--h) * 1.45);font-size:.9375rem}
+  .spine span{max-height:calc(var(--h) * 1.45 - 28px)}
+  .book{width:320px;padding:28px 26px 22px 30px}
+  .bk-slow .title{font-size:4rem}.bk-second .title{font-size:3rem}.bk-dark .title{font-size:2.125rem}
+  .bk-town .title{font-size:3.25rem}.bk-regency .title{font-size:2.875rem}.bk-silver .title{font-size:3.5rem}
+  .bk-silver .title b{font-size:5rem}.bk-work .title{font-size:3.375rem}
+  .faq-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--s5)}
+  .faq-grid > h2{grid-column:1 / span 4}
+  .faq-grid > .faq-list{grid-column:6 / span 7;margin-top:0}
+  .foot-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--s5)}
+  .foot-grid > :first-child{grid-column:1 / span 6}
+  .foot-grid > :last-child{grid-column:8 / span 5}
+}
+
+/* ---------- THE ONE MOMENT: scroll-driven iris into the phone ---------- */
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion: no-preference){
+  .moment{height:560svh;view-timeline:--moment block}
+  .stage{position:sticky;top:0;height:100svh;overflow:hidden;
+    --pw:min(304px, 100% - 64px); --ph:min(700px, 100svh - 72px); --iris:min(78vw, 56svh, 440px)}
+  .film{position:absolute;inset:0;height:auto;aspect-ratio:auto;
+    animation:iris linear both;animation-timeline:--moment;animation-range:contain 5% contain 30%}
+  .film-title,.film .pp{animation:fade-out linear both;animation-timeline:--moment;animation-range:contain 3% contain 13%}
+  .moment .phone-wrap{position:absolute;inset:0;margin:0;width:auto;display:grid;place-items:center}
+  .moment .phone{width:var(--pw);height:var(--ph);box-shadow:0 0 0 0 var(--ink);
+    animation:phone-in linear both;animation-timeline:--moment;animation-range:contain 27% contain 32%}
+  .moment .phone-label{display:block;position:absolute;left:0;right:0;text-align:center;color:var(--shadow);
+    animation:fade-in linear both;animation-timeline:--moment;animation-range:contain 28% contain 34%}
+  .moment .phone-label.top{top:calc(50% - var(--ph)/2 - 30px);font-size:.875rem}
+  .moment .thread{overflow:hidden;justify-content:flex-end}
+  .moment .thread > :first-child{margin-top:0}
+  .moment .ph-head{animation:fade-in linear both;animation-timeline:--moment;animation-range:contain 30% contain 33%}
+  .moment .thread > .row{animation:arrive linear both;animation-timeline:--moment;
+    animation-range:contain var(--at) contain calc(var(--at) + 2.5%)}
+  .moment .thread > .typing{display:flex;animation:typing linear both;animation-timeline:--moment;
+    animation-range:contain var(--at) contain calc(var(--at) + 5%)}
+  .moment .thread > .typing i{animation:dot 1s infinite ease-in-out}
+  .moment .thread > .typing i:nth-child(2){animation-delay:.15s}
+  .moment .thread > .typing i:nth-child(3){animation-delay:.3s}
+  .moment .thread > .status{display:flex;animation:status-blip linear both;animation-timeline:--moment;
+    animation-range:contain var(--at) contain calc(var(--at) + 6%)}
+  .moment .sheet{animation:say-in linear both;animation-timeline:--moment;animation-range:contain 85% contain 91%}
+  @keyframes say-in{from{max-height:0;opacity:0;overflow:hidden}to{max-height:60em;opacity:1;overflow:visible}}
+  @keyframes iris{
+    0%{clip-path:inset(0 0 0 0 round 0)}
+    48%{clip-path:inset(calc(50% - var(--iris)/2) calc(50% - var(--iris)/2) round 50%)}
+    100%{clip-path:inset(calc(50% - var(--ph)/2) calc(50% - var(--pw)/2) round var(--r-device))}
+  }
+  @keyframes fade-out{to{opacity:0;visibility:hidden}}
+  @keyframes fade-in{from{opacity:0}to{opacity:1}}
+  @keyframes film-dim{to{opacity:.0}}
+  @keyframes phone-in{from{opacity:0;box-shadow:0 0 0 0 var(--ink), 0 40px 80px -30px rgba(58,48,42,0)}
+    to{opacity:1;box-shadow:0 0 0 7px var(--ink), 0 40px 80px -30px rgba(58,48,42,.55)}}
+  @keyframes status-blip{0%{max-height:0;opacity:0}15%,70%{max-height:2em;opacity:1}100%{max-height:0;opacity:0;padding:0}}
+  @media (min-width:900px){
+    .stage{--pw:360px; --ph:min(780px, 100svh - 96px); --iris:min(62svh, 560px)}
+    .film-title{padding-bottom:var(--s8)}
+    .side{display:block;position:absolute;top:50%;transform:translateY(-50%);
+      animation:fade-in linear both;animation-timeline:--moment;animation-range:contain 27% contain 35%}
+    .side-l{left:max(var(--gutter), (100% - var(--max))/2);width:calc(50% - 180px - 2*var(--gutter) - max(0px, (100% - var(--max))/2))}
+    .side-l p{margin-top:var(--s5);max-width:20em}
+    .side-r{right:max(var(--gutter), (100% - var(--max))/2);width:calc(50% - 180px - 3*var(--gutter) - max(0px, (100% - var(--max))/2));}
+    .side-r p + p{margin-top:var(--s4)}
+    .phone-label{display:none}
+  }
+}}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header wrap">
-    <a class="wordmark" href="./" aria-label="Worlds with You home">Worlds <em>with</em> You<span class="brand-star" aria-hidden="true">✧</span></a>
-    <nav aria-label="Main navigation">
-      <a href="#experience">The experience</a>
-      <a href="#studio">Our studio</a>
-      <a class="nav-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
-    </nav>
-  </header>
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-art" src="assets/threshold.webp" alt="A stone arch opens onto a luminous sea beneath a dusk-to-dawn sky." width="1672" height="941" fetchpriority="high">
-      <div class="hero-shade"></div>
-      <div class="hero-content wrap">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> A new world is taking shape</p>
-        <h1 id="hero-title">A story is only<br>the <em>beginning.</em></h1>
-        <p class="hero-description">Step into cinematic stories. Make a choice.<br class="desktop-break"> Meet characters who remember.</p>
-        <a class="button" href="#experience">Discover Worlds with You <span aria-hidden="true">↗</span></a>
-        <p class="hero-note">Interactive fiction for your phone. Currently in development.</p>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="wrap site-head">
+  <a class="wordmark" href="./" aria-label="Worlds with You, home">Worlds with You</a>
+  <a class="head-cta" href="mailto:support@worldswithyou.com?subject=Tell%20me%20when%20Worlds%20with%20You%20opens">Tell me when it opens</a>
+</header>
+
+<main id="main">
+
+<!-- HERO: the feeling -->
+<section class="wrap hero" aria-labelledby="h-cover">
+  <div class="hero-text">
+    <h1 class="cover" id="h-cover">Love stories that remember you<span class="stop">.</span></h1>
+    <p class="lede">Worlds with You is an app of short, cinematic romance stories you step into. Watch a scene. Choose what to say. Then keep texting him. He remembers what happened between you.</p>
+    <div class="hero-cta">
+      <a class="btn" href="mailto:support@worldswithyou.com?subject=Tell%20me%20when%20Worlds%20with%20You%20opens">Tell me when it opens</a>
+      <p class="label">We’ll send one email when you can play.</p>
+    </div>
+  </div>
+  <figure class="frame hero-img">
+    <img src="assets/media/wes-portrait.webp" width="733" height="1100" alt="Wes, a dark-haired man in a flannel shirt, grinning at you in golden-hour light outside a brick school." fetchpriority="high">
+  </figure>
+</section>
+
+<!-- CHAPTER 1: A SCENE -->
+<section class="wrap ch scene" aria-labelledby="h-scene">
+  <div class="ch-head">
+    <h2 class="chapter" id="h-scene">A scene<span class="stop">.</span></h2>
+    <p class="lede body-max">Every story opens like a film, shot for your phone and seen through your eyes. You’re not watching the woman at the table. You’re her.</p>
+    <p class="label scene-note">An example from one story: a first date who orders for you.</p>
+  </div>
+  <div class="scene-frames">
+    <figure class="a">
+      <div class="frame">
+        <video data-loop muted playsinline loop preload="none" poster="assets/media/not-jess-steakhouse-grant-orders-poster.webp" data-src="assets/media/steakhouse-grant-orders.mp4" width="720" height="1280" aria-label="Across a steakhouse table, your date cuts his steak and tells you he always orders for his date."></video>
+        <button class="pp" type="button" aria-label="Play video" data-state="paused"></button>
       </div>
-      <div class="hero-bottom wrap"><span>Watch. Choose. Become part of the story.</span><span class="art-note">Original concept artwork</span></div>
-    </section>
+      <figcaption class="label cap">“I always order for my date. Saves everyone the decision.”</figcaption>
+    </figure>
+    <figure class="b">
+      <div class="frame"><img src="assets/media/04-grant-eye-contact.webp" width="720" height="1280" loading="lazy" alt="Your date looks straight at you, fork raised, a side salad in front of you."></div>
+      <figcaption class="label cap">“You said you’re in a wedding in twenty-three days. You’ll thank me.”</figcaption>
+    </figure>
+  </div>
+</section>
 
-    <section class="experience wrap section" id="experience" aria-labelledby="experience-title">
-      <div class="section-heading"><p class="eyebrow">The experience</p><h2 id="experience-title">Some stories stay with you.<br><em>These make room for you.</em></h2></div>
-      <p class="section-intro">Worlds with You brings short-form cinema, interactive romance fiction, and AI character conversation into one continuous experience. We’re building for the moment you wish a story could keep going.</p>
-      <div class="chapters">
-        <article><span class="chapter-number">01 <span aria-hidden="true">—</span></span><h3>A glimpse becomes a world.</h3><p>Discover a character, a place, a moment you can’t quite leave. A short cinematic preview is your invitation to step inside.</p><span class="chapter-label">Discover</span></article>
-        <article><span class="chapter-number">02 <span aria-hidden="true">—</span></span><h3>Your choices leave a mark.</h3><p>Enter an interactive story. Decide what to say, how to react, and where to go next. Find an ending that carries your choices.</p><span class="chapter-label">Play</span></article>
-        <article><span class="chapter-number">03 <span aria-hidden="true">—</span></span><h3>The conversation continues.</h3><p>Meet characters through the story, then continue in private chat. What happened between you becomes part of what they remember.</p><span class="chapter-label">Return</span></article>
+<!-- CHAPTER 2: A CHOICE — the one moment -->
+<section class="moment" aria-labelledby="h-choice">
+  <div class="stage">
+    <div class="film">
+      <video data-loop muted playsinline loop preload="none" poster="assets/media/sno-top-loop-poster.webp" data-src="assets/media/sno-top-loop.mp4" width="720" height="1280" aria-label="Night, through your windshield: a red fry stand under a streetlight, a basket of crinkle fries on your dashboard."></video>
+      <button class="pp" type="button" aria-label="Play video" data-state="paused"></button>
+      <div class="film-title">
+        <h2 class="chapter" id="h-choice">A choice<span class="stop">.</span></h2>
+        <p>After the date, you text your best friend from the car. Someone else answers.</p>
       </div>
-    </section>
+    </div>
 
-    <section class="manifesto" aria-labelledby="manifesto-title">
-      <div class="wrap manifesto-inner"><span class="large-star" aria-hidden="true">✧</span><p class="eyebrow">Made for the wonderfully invested</p><h2 id="manifesto-title">For the “one more chapter.”<br>The “what if I’d said yes?”<br>The <em>“I’m not ready for the credits.”</em></h2><p>Fiction you can feel. A world you can return to.</p></div>
-    </section>
+    <div class="side side-l" aria-hidden="true">
+      <p class="chapter">A choice<span class="stop">.</span></p>
+      <p class="lede">After the date, you text your best friend from the car. Someone else answers.</p>
+    </div>
+    <div class="side side-r" aria-hidden="true">
+      <p class="label">An example from one story.</p>
+      <p class="lede">When it matters, the story asks what you say. Tap an answer, then try another.</p>
+    </div>
 
-    <section class="studio wrap section" id="studio" aria-labelledby="studio-title">
-      <div><p class="eyebrow">The studio behind the worlds</p><h2 id="studio-title">Human curiosity.<br><em>New possibilities.</em></h2></div>
-      <div class="studio-copy"><p class="lead">We’re Exoself Systems, a California-based technology company founded by Kavin Stewart. Worlds with You is our exploration of what comes next for interactive entertainment.</p><p>We’re bringing authored storytelling together with generative AI to create characters with a point of view, memories rooted in the story, and reasons to surprise you.</p><p>Our focus is a mobile experience where video, choices, and conversation feel like parts of the same world.</p><a class="text-link" href="https://exoselfsystems.com/">Meet Exoself Systems <span aria-hidden="true">↗</span></a></div>
-      <div class="studio-facts"><div><span>Focus</span><strong>Interactive entertainment</strong></div><div><span>Platform</span><strong>Mobile</strong></div><div><span>Stage</span><strong>In development</strong></div></div>
-    </section>
+    <div class="phone-wrap">
+      <p class="label phone-label top" aria-hidden="true">An example from one story</p>
+      <div class="phone" role="group" aria-label="Example text conversation">
+        <div class="sbar" aria-hidden="true"><span>11:48</span><span class="sig"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="batt"></span></span></div>
+        <div class="ph-head">
+          <span class="ph-back" aria-hidden="true"></span>
+          <div class="who">
+            <span class="av" aria-hidden="true"><span class="n0">J</span><span class="n1">N</span><span class="n2">W</span></span>
+            <span class="nm"><span class="n0">Jess</span><span class="n1">Not Jess</span><span class="n2">Wes (not Jess)</span></span>
+          </div>
+        </div>
+        <form class="say" onsubmit="return false">
+        <div class="thread" role="group" aria-label="Messages">
+          <div class="row me tail" style="--at:34%"><p class="b"><span class="visually-hidden">You: </span>JESS. He ordered for me. He ordered me a SIDE SALAD.</p></div>
+          <div class="row status" style="--at:36%" aria-hidden="true">Delivered</div>
+          <div class="row him typing" style="--at:40%" aria-hidden="true"><span class="b"><i></i><i></i><i></i></span></div>
+          <div class="row him g" style="--at:44%"><p class="b"><span class="visually-hidden">Him: </span>not jess but WHAT</p></div>
+          <div class="row him tail" style="--at:48%"><p class="b"><span class="visually-hidden">Him: </span>a SIDE salad??</p></div>
+          <div class="row me g tail" style="--at:53%"><p class="b"><span class="visually-hidden">You: </span>who is this</p></div>
+          <div class="row him g tail" style="--at:58%"><p class="b"><span class="visually-hidden">Him: </span>nobody. i got jess’s old number. what did you DO</p></div>
+          <div class="row me g tail" style="--at:64%"><p class="b"><span class="visually-hidden">You: </span>I left. I’m eating fries in my car.</p></div>
+          <div class="row him g tail" style="--at:70%"><p class="b"><span class="visually-hidden">Him: </span>wait</p></div>
+          <div class="row him typing" style="--at:73%" aria-hidden="true"><span class="b"><i></i><i></i><i></i></span></div>
+          <div class="row him tail" style="--at:78%"><p class="b"><span class="visually-hidden">Him: </span>i’m also eating fries in my car</p></div>
 
-    <section class="questions wrap section" aria-labelledby="questions-title">
-      <div><p class="eyebrow">Before you step inside</p><h2 id="questions-title">A little more<br><em>about our world.</em></h2></div>
-      <div class="faq-list">
-        <details><summary>Can I try Worlds with You yet?<span aria-hidden="true">+</span></summary><p>We’re developing the first experience. There’s no public release or announced launch date yet. For product questions or partnership enquiries, contact <a href="mailto:support@worldswithyou.com">support@worldswithyou.com</a>.</p></details>
-        <details><summary>Who is it for?<span aria-hidden="true">+</span></summary><p>Worlds with You is being created for adults aged 18 and over who enjoy cinematic stories, interactive romance, and character-driven fiction. All romanceable characters are adults.</p></details>
-        <details><summary>How does AI fit into the experience?<span aria-hidden="true">+</span></summary><p>We’re combining authored story moments with AI-generated character dialogue. Conversations are designed to reflect each character’s personality and what they know about your story, including the choices you’ve made.</p></details>
-        <details><summary>Are the characters real people?<span aria-hidden="true">+</span></summary><p>No. The worlds, stories, and characters are fiction. Worlds with You is an entertainment experience, and we make that distinction clear.</p></details>
-        <details><summary>How do you approach responsible storytelling?<span aria-hidden="true">+</span></summary><p>Our development principles include an adult audience, clear fictional framing, character boundaries, and content review. Read our <a href="privacy/">Privacy Policy</a> and <a href="terms/">Terms of Service</a>.</p></details>
+            <div class="outs" aria-live="polite">
+              <div class="out out-block">
+                <div class="row me g tail"><p class="b"><span class="visually-hidden">You: </span>nope. blocking you</p></div>
+                <div class="row status" aria-hidden="true">Delivered</div>
+                <div class="row him typing" aria-hidden="true"><span class="b"><i></i><i></i><i></i></span></div>
+                <div class="row him g tail"><p class="b"><span class="visually-hidden">Him: </span>fair. enjoy the fries</p></div>
+                <p class="row sys-line">This contact is blocked.</p>
+              </div>
+              <div class="out out-fries">
+                <div class="row me g tail"><p class="b"><span class="visually-hidden">You: </span>no way. crinkle cut, extra salt, burnt little ones first. you?</p></div>
+                <div class="row status" aria-hidden="true">Delivered</div>
+                <div class="row him typing" aria-hidden="true"><span class="b"><i></i><i></i><i></i></span></div>
+                <div class="row him g tail"><p class="b"><span class="visually-hidden">Him: </span>waffle. and burnt little ones first is elite behavior</p></div>
+              </div>
+              <div class="out out-name">
+                <div class="row me g tail"><p class="b"><span class="visually-hidden">You: </span>ok but what’s your actual name</p></div>
+                <div class="row status" aria-hidden="true">Delivered</div>
+                <div class="row him typing" aria-hidden="true"><span class="b"><i></i><i></i><i></i></span></div>
+                <div class="row him g tail"><p class="b"><span class="visually-hidden">Him: </span>wes. 8th grade science teacher. i have 31 lab reports in the passenger seat and i’m ignoring all of them. you don’t have to tell me yours</p></div>
+              </div>
+            </div>
+        </div>
+        <div class="composer">
+          <div class="sheet">
+            <fieldset>
+              <legend>What do you say?</legend>
+              <label class="opt"><input type="radio" name="say" id="say-block" value="block">Block him.</label>
+              <label class="opt"><input type="radio" name="say" id="say-fries" value="fries">Tell him the fries.</label>
+              <label class="opt"><input type="radio" name="say" id="say-name" value="name">Ask his name.</label>
+            </fieldset>
+            <button class="again" type="reset">Choose again</button>
+          </div>
+          <div class="inbar" aria-hidden="true">
+            <span class="plus"></span>
+            <span class="field"><span class="ph-t">Message</span><span class="ft ft-block">nope. blocking you</span><span class="ft ft-fries">no way. crinkle cut, extra salt, burnt little ones first. you?</span><span class="ft ft-name">ok but what’s your actual name</span><span class="send"></span></span>
+          </div>
+          <div class="kb" aria-hidden="true">
+            <div class="kr"><span>q</span><span>w</span><span>e</span><span>r</span><span>t</span><span>y</span><span>u</span><span>i</span><span>o</span><span>p</span></div>
+            <div class="kr"><span>a</span><span>s</span><span>d</span><span>f</span><span>g</span><span>h</span><span>j</span><span>k</span><span>l</span></div>
+            <div class="kr r3"><span class="fn"><svg viewBox="0 0 20 20" fill="none" stroke="#111" stroke-width="1.6" stroke-linejoin="round"><path d="M10 2.5 2.5 10.5H6.5V17h7v-6.5h4Z"/></svg></span><div class="grp"><span>z</span><span>x</span><span>c</span><span>v</span><span>b</span><span>n</span><span>m</span></div><span class="fn"><svg viewBox="0 0 24 18" fill="none" stroke="#111" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M7.5 1.5H21a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5H7.5L1.5 9Z"/><path d="m11 5.5 7 7m0-7-7 7"/></svg></span></div>
+            <div class="kr"><span class="fn wide">123</span><span class="space">space</span><span class="fn wide">return</span></div>
+            <span class="home"></span>
+          </div>
+        </div>
+        </form>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="contact wrap" id="contact" aria-labelledby="contact-title"><div><p class="eyebrow">Let’s start a conversation</p><h2 id="contact-title">There’s a world<br><em>of possibility.</em></h2><p>Partnerships, press, or a little curiosity.<br>We’d love to hear from you.</p></div><a class="contact-link" href="mailto:support@worldswithyou.com">support@worldswithyou.com <span aria-hidden="true">↗</span></a></section>
-  </main>
-  <footer class="site-footer wrap"><div><a class="wordmark" href="./">Worlds <em>with</em> You</a><p>A world from Exoself Systems.<br>© 2026 Exoself Systems. All rights reserved.</p></div><div class="footer-links"><a href="privacy/">Privacy</a><a href="terms/">Terms</a><a href="https://github.com/kavinstewart/worldswithyou">GitHub <span aria-hidden="true">↗</span></a><a href="mailto:support@worldswithyou.com">Contact <span aria-hidden="true">↗</span></a></div><p class="footer-note">Fictional worlds. Real imagination.<br>Intended for adults 18+.</p></footer>
+<div class="wrap after-moment">
+  <p class="lede">Each answer is really yours. Say something else, and he answers something else.</p>
+</div>
+
+<!-- CHAPTER 3: A CONVERSATION -->
+<section class="wrap ch conversation" aria-labelledby="h-conv">
+  <div class="ch-head">
+    <h2 class="chapter" id="h-conv">A conversation<span class="stop">.</span></h2>
+    <p class="lede body-max">Then the story carries on in your messages. Text him tonight, or next week. He remembers what happened between you, right down to the salad.</p>
+  </div>
+  <div class="memory">
+    <figure class="frame"><img src="assets/media/06-your-hand-sets-down-cash.webp" width="720" height="1280" loading="lazy" alt="The side salad: iceberg, two tomatoes, cucumber coins, and your eleven dollars beside it."></figure>
+    <div class="mem-phone">
+      <p class="when">Later, in the same story</p>
+      <div class="phone" role="group" aria-label="Later in the same example conversation">
+        <div class="sbar" aria-hidden="true"><span>9:12</span><span class="sig"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="batt"></span></span></div>
+        <div class="ph-head"><span class="ph-back" aria-hidden="true"></span><div class="who"><span class="av" aria-hidden="true">N</span><span class="nm">Not Jess</span></div></div>
+        <div class="thread">
+          <div class="row me g tail"><p class="b"><span class="visually-hidden">You: </span>why are YOU eating fries in your car</p></div>
+          <div class="row him g tail"><p class="b"><span class="visually-hidden">Wes: </span>long day. the car was the nicest room available</p></div>
+          <div class="row me g tail"><p class="b"><span class="visually-hidden">You: </span>that’s so bleak</p></div>
+          <div class="row him g tail"><p class="b"><span class="visually-hidden">Wes: </span>it was, until about ten minutes ago</p></div>
+          <div class="row him g tail"><p class="b"><span class="visually-hidden">Wes: </span>ok wait go back. he ORDERED for you?</p></div>
+          <div class="row me g tail"><p class="b"><span class="visually-hidden">You: </span>he said I’d thank him. because of a dress</p></div>
+          <div class="row him g tail"><p class="b"><span class="visually-hidden">Wes: </span>a DRESS??</p></div>
+          <div class="row him tail"><p class="b"><span class="visually-hidden">Wes: </span>what was even on the salad</p></div>
+          <div class="row me g tail"><p class="b"><span class="visually-hidden">You: </span>three cucumber coins</p></div>
+          <div class="row him g tail"><p class="b"><span class="visually-hidden">Wes: </span>three. he had a whole menu and he picked three cucumbers for you</p></div>
+          <div class="row me g tail"><p class="b"><span class="visually-hidden">You: </span>I left eleven dollars on the table and walked out</p></div>
+          <div class="row him g tail"><p class="b"><span class="visually-hidden">Wes: </span>you TIPPED on the salad you didn’t eat</p></div>
+        </div>
+        <div class="composer">
+          <div class="inbar" aria-hidden="true"><span class="plus"></span><span class="field"><span class="ph-t">Message</span></span></div>
+          <span class="mem-home" aria-hidden="true"></span>
+        </div>
+      </div>
+      <p class="label mem-note">In the app, his replies are generated by AI, in his voice.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <div><h3 class="h3">He remembers the small things.</h3><p>What you ordered, what you didn’t, and what you told him about it.</p></div>
+    <div><h3 class="h3">You set the pace.</h3><p>Linger on one night for as long as you like. The story moves when you do.</p></div>
+    <div><h3 class="h3">A story, not a chatbot.</h3><p>Every conversation starts from a filmed scene, with a story and a man who belong to it.</p></div>
+  </div>
+</section>
+
+<!-- RANGE: the shelf -->
+<section class="wrap range" aria-labelledby="h-range">
+  <div class="range-grid">
+    <div class="range-copy">
+      <h2 class="h2" id="h-range">Many worlds. Many kinds of men.</h2>
+      <p class="lede body-max">Slow burns and second chances. Small towns and ballrooms. The boss you shouldn’t, and the man with silver at his temples. Choose the one you’re in the mood for.</p>
+      <p class="label shelf-hint">Tap a spine to see its cover.</p>
+    </div>
+    <!-- PLACEHOLDER STORIES: the seven covers and spines below are invented placeholders for layout.
+         Titles, genres and premises are not real catalogue items; replace with real stories before launch. -->
+    <div class="bookcase">
+      <div class="cover-stage" aria-live="polite">
+        <article class="book bk-slow" id="bk-slow" aria-label="The Long Way Home, a slow burn">
+          <p class="genre">Slow burn</p>
+          <h3 class="title"><span>The</span><span>long</span><span>way</span><span>home</span></h3>
+          <p class="premise">Two summers of almost. This one, he finally says it out loud.</p>
+          <p class="mark">Worlds with You</p>
+        </article>
+        <article class="book bk-second" id="bk-second" hidden aria-label="Last Call at the Lantern, a second chance">
+          <p class="genre">Second chance</p>
+          <h3 class="title">Last Call at the Lantern</h3>
+          <p class="premise">Your ex bought the bar where you used to meet. He kept your stool.</p>
+          <p class="mark">Worlds with You</p>
+        </article>
+        <article class="book bk-dark" id="bk-dark" hidden aria-label="Velvet Hours, a dark romance">
+          <p class="genre">Dark romance</p>
+          <h3 class="title"><span>Velvet</span><span>Hours</span></h3>
+          <p class="premise">He runs the city after midnight. He has decided you are his problem.</p>
+          <p class="mark">Worlds with You</p>
+        </article>
+        <article class="book bk-town" id="bk-town" hidden aria-label="Orchard Road, a small-town romance">
+          <p class="genre">Small-town</p>
+          <h3 class="title"><small>Pop. 812</small>Orchard Road</h3>
+          <p class="premise">You came home to sell the orchard. The man who runs it has other plans.</p>
+          <p class="mark">Worlds with You</p>
+        </article>
+        <article class="book bk-regency" id="bk-regency" hidden aria-label="A Season of Scandal, a Regency romance">
+          <p class="genre">Regency</p>
+          <h3 class="title"><span>A Season</span><small>of</small><span>Scandal</span></h3>
+          <p class="premise">One waltz with the duke’s disreputable brother, and the whole town is talking.</p>
+          <p class="mark">Worlds with You</p>
+        </article>
+        <article class="book bk-silver" id="bk-silver" hidden aria-label="Silver and Salt, a silver fox romance">
+          <p class="genre">Silver fox</p>
+          <h3 class="title"><span>Silver</span><b>&amp;</b><span>Salt</span></h3>
+          <p class="premise">A boat captain twenty years older, who calls you trouble like it’s a compliment.</p>
+          <p class="mark">Worlds with You</p>
+        </article>
+        <article class="book bk-work" id="bk-work" hidden aria-label="Out of Office, a workplace romance">
+          <p class="genre">Workplace</p>
+          <h3 class="title"><span>Out of</span><span>Office</span></h3>
+          <p class="premise">Your new boss is the man from the airport bar. Neither of you has mentioned it.</p>
+          <p class="mark">Worlds with You</p>
+        </article>
+      </div>
+      <div class="shelf" role="group" aria-label="Stories. Choose one to see its cover.">
+        <button class="spine bk-slow" type="button" aria-pressed="true" aria-controls="bk-slow" style="--h:250px"><span>The Long Way Home</span></button>
+        <button class="spine bk-second" type="button" aria-pressed="false" aria-controls="bk-second" style="--h:178px"><span>Last Call</span></button>
+        <button class="spine bk-dark" type="button" aria-pressed="false" aria-controls="bk-dark" style="--h:206px"><span>Velvet Hours</span></button>
+        <button class="spine bk-town" type="button" aria-pressed="false" aria-controls="bk-town" style="--h:170px"><span>Orchard Road</span></button>
+        <button class="spine bk-regency" type="button" aria-pressed="false" aria-controls="bk-regency" style="--h:300px"><span>A Season of Scandal</span></button>
+        <button class="spine bk-silver" type="button" aria-pressed="false" aria-controls="bk-silver" style="--h:184px"><span>Silver &amp; Salt</span></button>
+        <button class="spine bk-work" type="button" aria-pressed="false" aria-controls="bk-work" style="--h:192px"><span>Out of Office</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="wrap faq" aria-labelledby="h-faq">
+  <div class="faq-grid">
+    <h2 class="h2" id="h-faq">Questions<span class="stop">.</span></h2>
+    <div class="faq-list">
+      <details>
+        <summary>What is Worlds with You?</summary>
+        <div class="ans"><p>An app of short, cinematic romance stories you step into. Each story opens with a filmed scene, seen through your eyes. Then it carries on as a text conversation with him.</p></div>
+      </details>
+      <details>
+        <summary>How does it work?</summary>
+        <div class="ans"><p>Watch a scene. When it matters, the story asks what you say, and what you choose changes what he says back. After the scene, keep texting him whenever you like. He remembers what happened between you.</p></div>
+      </details>
+      <details>
+        <summary>Who writes the stories, and where does AI come in?</summary>
+        <div class="ans"><p>Films, choices and stories are written and reviewed before release. In chat, his replies are generated by AI in the character’s voice, from your story.</p></div>
+      </details>
+      <details>
+        <summary>Are the characters real?</summary>
+        <div class="ans"><p>No. The characters and their stories are fiction.</p></div>
+      </details>
+      <details>
+        <summary>What happens to my chats?</summary>
+        <div class="ans"><p>We don’t use your chats to train AI models, and we don’t sell your personal information. The <a href="/privacy/">privacy policy</a> has the details.</p></div>
+      </details>
+      <details>
+        <summary>When can I play?</summary>
+        <div class="ans"><p>Worlds with You is still in development, and there’s no release date yet. <a href="mailto:support@worldswithyou.com?subject=Tell%20me%20when%20Worlds%20with%20You%20opens">Tell us you’d like to know</a>, and we’ll send one email when it opens.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" aria-labelledby="h-cta">
+  <div class="wrap">
+    <h2 class="cover" id="h-cta">Be there when it opens<span class="stop">.</span></h2>
+    <p class="label cta-note">We’ll send one email when you can play. That’s all.</p>
+    <a class="btn" href="mailto:support@worldswithyou.com?subject=Tell%20me%20when%20Worlds%20with%20You%20opens">Tell me when it opens</a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="wordmark" href="./">Worlds with You</a>
+      <p class="disclose">Characters and stories are fictional. Their responses may be generated by AI. This experience is for adults.</p>
+    </div>
+    <div>
+      <nav aria-label="Legal and contact">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="mailto:support@worldswithyou.com">support@worldswithyou.com</a>
+      </nav>
+      <small>From Exoself Systems, California.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('video[data-loop]').forEach(v => {
+    const btn = v.parentElement.querySelector('.pp');
+    let userPaused = still, visible = false;
+    const load = () => { if (!v.src) v.src = v.dataset.src; };
+    const sync = () => {
+      const paused = v.paused;
+      btn.dataset.state = paused ? 'paused' : 'playing';
+      btn.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
+    };
+    const run = () => { if (visible && !userPaused) { load(); v.play().catch(() => {}); } else v.pause(); };
+    v.addEventListener('play', sync); v.addEventListener('pause', sync);
+    btn.addEventListener('click', () => { userPaused = !v.paused ? true : false; if (!userPaused) { load(); v.play().catch(()=>{}); } else v.pause(); });
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; run(); }, { threshold: 0.25 }).observe(v);
+  });
+  const spines = [...document.querySelectorAll('.spine')];
+  spines.forEach(sp => sp.addEventListener('click', () => {
+    if (sp.getAttribute('aria-pressed') === 'true') return;
+    spines.forEach(x => x.setAttribute('aria-pressed', String(x === sp)));
+    document.querySelectorAll('.book').forEach(b => b.hidden = true);
+    const book = document.getElementById(sp.getAttribute('aria-controls'));
+    book.hidden = false;
+    if (still || !book.animate) return;
+    const wide = matchMedia('(min-width: 900px)').matches;
+    book.animate([{ opacity: 0, transform: wide ? 'translateX(-20px)' : 'translateY(14px)' }, { opacity: 1, transform: 'none' }], { duration: 280, easing: 'cubic-bezier(.2,.8,.2,1)' });
+  }));
+  const form = document.querySelector('.say');
+  if (form) {
+    const thread = form.querySelector('.thread');
+    const scrolls = getComputedStyle(thread).overflowY === 'auto';
+    const toEnd = () => { if (scrolls) thread.scrollTop = thread.scrollHeight; };
+    if (scrolls) { thread.tabIndex = 0; toEnd(); new ResizeObserver(toEnd).observe(form.querySelector('.outs')); }
+    form.addEventListener('change', () => { form.querySelector('.again').focus({ preventScroll: true }); toEnd(); });
+    form.addEventListener('reset', () => setTimeout(() => { form.querySelector('input').focus({ preventScroll: true }); toEnd(); }));
+  }
+})();
+</script>
 </body>
 </html>
