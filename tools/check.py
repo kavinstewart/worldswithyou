@@ -39,6 +39,7 @@ for path, page in pages.items():
         if url.fragment and target in pages:
             assert unquote(url.fragment) in pages[target].ids, f'{path}: broken anchor {link}'
 assert (root / 'CNAME').read_text().strip() == 'worldswithyou.com'
-assert (root / 'assets/threshold.webp').stat().st_size < 1_500_000, 'Optimize hero artwork'
+media = sum(f.stat().st_size for f in (root / 'assets').rglob('*') if f.is_file())
+assert media < 2_000_000, f'Asset budget exceeded: {media} bytes'
 assert len(pages) >= 4
-print(f'Passed: {len(pages)} pages, metadata, local links, anchors, image dimensions, domain and image budget.')
+print(f'Passed: {len(pages)} pages, metadata, local links, anchors, image dimensions, domain and asset budget.')

@@ -6,7 +6,7 @@ The public information website for Worlds with You, an interactive fiction produ
 
 ## Development
 
-The site uses semantic HTML, CSS, and locally served artwork. It has no JavaScript runtime, third-party tracking, web fonts, package dependencies, or application backend. Python 3.9+ runs the build and link checks.
+The site uses semantic HTML, CSS, self-hosted OFL fonts, and locally served media. A short inline script lazy-loads the videos and runs the bookshelf; the conversation choice works with CSS alone. It has no third-party requests, tracking, package dependencies, or application backend. Python 3.9+ runs the build and link checks.
 
 ```sh
 just serve   # Local preview: http://127.0.0.1:4173
