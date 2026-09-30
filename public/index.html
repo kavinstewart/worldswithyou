@@ -1,80 +1,198 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Worlds with You — Stories you step into</title>
-  <meta name="description" content="Worlds with You is a new mobile entertainment experience blending cinematic stories, meaningful choices, and AI characters who remember. In development by Exoself Systems.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Worlds with You — Romance you get to answer</title>
+  <meta name="description" content="Short cinematic romances where you make the choices, then keep texting the characters. They remember what you did. An 18+ interactive fiction app in development by Exoself Systems.">
   <meta name="theme-color" content="#131020">
   <link rel="canonical" href="https://worldswithyou.com/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Worlds with You — Stories you step into">
-  <meta property="og:description" content="A story is only the beginning. Discover a new kind of interactive fiction, in development by Exoself Systems.">
+  <meta property="og:title" content="Worlds with You — Romance you get to answer">
+  <meta property="og:description" content="He ordered you a side salad. You texted the wrong number. A stranger answered. Short cinematic romances you step into, in development.">
   <meta property="og:url" content="https://worldswithyou.com/">
   <meta property="og:site_name" content="Worlds with You">
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/styles.css">
-  <link rel="preload" as="image" href="assets/threshold.webp">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Worlds with You","url":"https://worldswithyou.com/","email":"support@worldswithyou.com","description":"A mobile interactive fiction product in development by Exoself Systems.","parentOrganization":{"@type":"Organization","name":"Exoself Systems","url":"https://exoselfsystems.com/"},"sameAs":["https://github.com/kavinstewart/worldswithyou"]}</script>
 </head>
-<body>
+<body class="home">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header wrap">
-    <a class="wordmark" href="./" aria-label="Worlds with You home">Worlds <em>with</em> You<span class="brand-star" aria-hidden="true">✧</span></a>
+    <a class="wordmark" href="./" aria-label="Worlds with You home">Worlds with You</a>
     <nav aria-label="Main navigation">
-      <a href="#experience">The experience</a>
-      <a href="#studio">Our studio</a>
-      <a class="nav-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+      <a href="#film">How it plays</a>
+      <a href="#worlds">Worlds</a>
+      <a href="#questions">Questions</a>
+      <a class="nav-contact" href="#open">Get launch news</a>
     </nav>
   </header>
+
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-art" src="assets/threshold.webp" alt="A stone arch opens onto a luminous sea beneath a dusk-to-dawn sky." width="1672" height="941" fetchpriority="high">
-      <div class="hero-shade"></div>
-      <div class="hero-content wrap">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> A new world is taking shape</p>
-        <h1 id="hero-title">A story is only<br>the <em>beginning.</em></h1>
-        <p class="hero-description">Step into cinematic stories. Make a choice.<br class="desktop-break"> Meet characters who remember.</p>
-        <a class="button" href="#experience">Discover Worlds with You <span aria-hidden="true">↗</span></a>
-        <p class="hero-note">Interactive fiction for your phone. Currently in development.</p>
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">You’re in this one.</h1>
+        <p class="hero-lede">Short cinematic romances where you make the choices. Then you keep texting the characters, and they remember what you did.</p>
+        <p class="hero-try">Try the opening of our first world. It’s a Tuesday, 9:31 at night, and your date just ordered for you.</p>
+        <div class="hero-actions">
+          <a class="button" href="#open">Get launch news</a>
+          <a class="quiet-link" href="#film">How a world plays</a>
+        </div>
       </div>
-      <div class="hero-bottom wrap"><span>Watch. Choose. Become part of the story.</span><span class="art-note">Original concept artwork</span></div>
+
+      <form class="phone" aria-label="Interactive preview: the opening of Not Jess" onsubmit="return false">
+        <input class="choice-input" type="radio" name="pick" id="pick-none" checked aria-label="Undecided">
+        <div class="phone-screen">
+          <div class="phone-status" aria-hidden="true"><span>9:34</span><span class="status-icons"><i></i><i></i><i></i></span></div>
+          <div class="phone-head">
+            <span class="phone-back" aria-hidden="true">‹</span>
+            <span class="phone-avatar" aria-hidden="true">J</span>
+            <span class="phone-name"><span class="name-default">Jess</span><span class="name-fries">Not Jess</span><span class="name-name">Wes (not Jess)</span></span>
+          </div>
+          <ol class="thread" aria-live="polite">
+            <li class="stamp">Today 6:48 PM</li>
+            <li class="m her">first date w grant tonight 😬</li>
+            <li class="receipt">Delivered</li>
+            <li class="stamp">Today 9:31 PM</li>
+            <li class="m her" style="--t:.5s">JESS. He ordered for me. He ordered me a SIDE SALAD.</li>
+            <li class="typing" style="--t:1.2s;--d:1.3s" aria-hidden="true"><i></i><i></i><i></i></li>
+            <li class="m him" style="--t:2.5s">not jess but WHAT</li>
+            <li class="m him" style="--t:3.1s">a SIDE salad??</li>
+            <li class="m her" style="--t:4.3s">who is this</li>
+            <li class="typing" style="--t:4.9s;--d:1.2s" aria-hidden="true"><i></i><i></i><i></i></li>
+            <li class="m him" style="--t:6.1s">nobody. i got jess’s old number. what did you DO</li>
+            <li class="m her" style="--t:7.4s">I left. I’m eating fries in my car.</li>
+            <li class="m him" style="--t:8.3s">wait</li>
+            <li class="typing" style="--t:8.8s;--d:1.4s" aria-hidden="true"><i></i><i></i><i></i></li>
+            <li class="m him" style="--t:10.2s">i’m also eating fries in my car</li>
+
+            <li class="m her branch b-block" style="--t:.15s">nope. blocking you</li>
+            <li class="typing branch b-block" style="--t:.8s;--d:1s" aria-hidden="true"><i></i><i></i><i></i></li>
+            <li class="m him branch b-block" style="--t:1.8s">fair. enjoy the fries</li>
+            <li class="system branch b-block" style="--t:2.6s">This contact is blocked.</li>
+
+            <li class="m her branch b-fries" style="--t:.15s">no way. crinkle cut, extra salt, burnt little ones first. you?</li>
+            <li class="typing branch b-fries" style="--t:.8s;--d:1.5s" aria-hidden="true"><i></i><i></i><i></i></li>
+            <li class="m him branch b-fries" style="--t:2.3s">waffle. and burnt little ones first is elite behavior</li>
+
+            <li class="m her branch b-name" style="--t:.15s">ok but what’s your actual name</li>
+            <li class="typing branch b-name" style="--t:.8s;--d:2s" aria-hidden="true"><i></i><i></i><i></i></li>
+            <li class="m him branch b-name" style="--t:2.8s">wes. 8th grade science teacher. i have 31 lab reports in the passenger seat and i’m ignoring all of them. you don’t have to tell me yours</li>
+          </ol>
+          <div class="sheet-slot">
+            <fieldset class="sheet">
+              <legend>What do you say?</legend>
+              <label><input class="choice-input" type="radio" name="pick" id="pick-block">Block him.</label>
+              <label><input class="choice-input" type="radio" name="pick" id="pick-fries">Tell him the fries.</label>
+              <label><input class="choice-input" type="radio" name="pick" id="pick-name">Ask his name.</label>
+            </fieldset>
+            <div class="after">
+              <a href="#inbox">What happens next</a>
+              <label class="again" for="pick-none">Choose again</label>
+            </div>
+          </div>
+        </div>
+        <p class="phone-caption">The opening of <cite>Not Jess</cite>, as it plays on your phone in the story.</p>
+      </form>
     </section>
 
-    <section class="experience wrap section" id="experience" aria-labelledby="experience-title">
-      <div class="section-heading"><p class="eyebrow">The experience</p><h2 id="experience-title">Some stories stay with you.<br><em>These make room for you.</em></h2></div>
-      <p class="section-intro">Worlds with You brings short-form cinema, interactive romance fiction, and AI character conversation into one continuous experience. We’re building for the moment you wish a story could keep going.</p>
-      <div class="chapters">
-        <article><span class="chapter-number">01 <span aria-hidden="true">—</span></span><h3>A glimpse becomes a world.</h3><p>Discover a character, a place, a moment you can’t quite leave. A short cinematic preview is your invitation to step inside.</p><span class="chapter-label">Discover</span></article>
-        <article><span class="chapter-number">02 <span aria-hidden="true">—</span></span><h3>Your choices leave a mark.</h3><p>Enter an interactive story. Decide what to say, how to react, and where to go next. Find an ending that carries your choices.</p><span class="chapter-label">Play</span></article>
-        <article><span class="chapter-number">03 <span aria-hidden="true">—</span></span><h3>The conversation continues.</h3><p>Meet characters through the story, then continue in private chat. What happened between you becomes part of what they remember.</p><span class="chapter-label">Return</span></article>
+    <section class="film wrap" id="film" aria-labelledby="film-title">
+      <div class="film-frame" role="img" aria-label="An amber-lit steakhouse scene with subtitles from the opening of Not Jess: he orders you a side salad, and you leave.">
+        <div class="film-light" aria-hidden="true"></div>
+        <p class="cap" style="--i:0" aria-hidden="true">[A ribeye for him. A side salad for you.]</p>
+        <p class="cap" style="--i:1" aria-hidden="true">GRANT: I always order for my date.</p>
+        <p class="cap" style="--i:2" aria-hidden="true">GRANT: You’ll thank me.</p>
+        <p class="cap" style="--i:3" aria-hidden="true">[You leave eleven dollars on the table.]</p>
+        <div class="film-info" aria-hidden="true"><span class="film-title">Not Jess</span><span class="film-who">Wes</span><span class="film-line">Your date ordered for you. A stranger took your side.</span><span class="film-enter">Enter</span></div>
+      </div>
+      <div class="film-copy">
+        <h2 id="film-title">Every world opens on film.</h2>
+        <p>Each story starts as a short, vertical, cinematic scene, the kind you already binge before bed. Then it stops and hands you the phone.</p>
+        <p>You decide what to say. The story plays out your way. And the character you just met is waiting in your inbox.</p>
       </div>
     </section>
 
-    <section class="manifesto" aria-labelledby="manifesto-title">
-      <div class="wrap manifesto-inner"><span class="large-star" aria-hidden="true">✧</span><p class="eyebrow">Made for the wonderfully invested</p><h2 id="manifesto-title">For the “one more chapter.”<br>The “what if I’d said yes?”<br>The <em>“I’m not ready for the credits.”</em></h2><p>Fiction you can feel. A world you can return to.</p></div>
+    <section class="inbox wrap" id="inbox" aria-labelledby="inbox-title">
+      <div class="inbox-copy">
+        <h2 id="inbox-title">He remembers the three cucumber coins.</h2>
+        <p>When the scene ends, the conversation keeps going. Characters answer in their own voice, and they remember what happened between you: the choices you made and the details you told them.</p>
+        <p>Wes knows only what you tell him. He never texts first. You set the pace.</p>
+        <p class="fine">An example of how a chat with Wes can go. In the app, his replies are generated by AI, in his voice, from your story.</p>
+      </div>
+      <div class="app" role="group" aria-label="Example chat with Not Jess in the Worlds with You app">
+        <div class="app-head"><span class="app-avatar" aria-hidden="true">W</span><span class="app-name">Not Jess</span></div>
+        <ol class="app-thread">
+          <li class="c them">waffle. and burnt little ones first is elite behavior</li>
+          <li class="c me">why are YOU eating fries in your car</li>
+          <li class="c them">long day. the car was the nicest room available</li>
+          <li class="c me">that’s so bleak</li>
+          <li class="c them">it was, until about ten minutes ago</li>
+          <li class="c them">what was even on the salad</li>
+          <li class="c me">three cucumber coins</li>
+          <li class="c them">three. he had a whole menu and he picked three cucumbers for you</li>
+          <li class="c me">I left eleven dollars on the table and walked out</li>
+          <li class="c them">you TIPPED on the salad you didn’t eat</li>
+          <li class="c them">i hope he thinks about that eleven dollars for the rest of his life</li>
+        </ol>
+        <div class="app-compose" aria-hidden="true"><span>Message</span><i></i></div>
+      </div>
     </section>
 
-    <section class="studio wrap section" id="studio" aria-labelledby="studio-title">
-      <div><p class="eyebrow">The studio behind the worlds</p><h2 id="studio-title">Human curiosity.<br><em>New possibilities.</em></h2></div>
-      <div class="studio-copy"><p class="lead">We’re Exoself Systems, a California-based technology company founded by Kavin Stewart. Worlds with You is our exploration of what comes next for interactive entertainment.</p><p>We’re bringing authored storytelling together with generative AI to create characters with a point of view, memories rooted in the story, and reasons to surprise you.</p><p>Our focus is a mobile experience where video, choices, and conversation feel like parts of the same world.</p><a class="text-link" href="https://exoselfsystems.com/">Meet Exoself Systems <span aria-hidden="true">↗</span></a></div>
-      <div class="studio-facts"><div><span>Focus</span><strong>Interactive entertainment</strong></div><div><span>Platform</span><strong>Mobile</strong></div><div><span>Stage</span><strong>In development</strong></div></div>
+    <section class="worlds" id="worlds" aria-labelledby="worlds-title">
+      <div class="wrap worlds-head">
+        <h2 id="worlds-title">Pick your trouble.</h2>
+        <p>Worlds in our writers’ room now. Titles and details may change before they open.</p>
+      </div>
+      <ul class="shelf" role="list">
+        <li class="poster p1"><span class="trope">Wrong number</span><h3>Not Jess</h3><p>A date orders you a side salad. You text your best friend to complain. A stranger answers.</p></li>
+        <li class="poster p2"><span class="trope">Contract marriage</span><h3>Ninety Days</h3><p>A family takes your restaurant and your name. The most feared man in the room offers you ninety days of marriage, and a promise: on the ninety-first, they’ll have nothing.</p></li>
+        <li class="poster p3"><span class="trope">Regency scandal</span><h3>The Season</h3><p>Jilted at the altar in front of all London. Then the most notorious man in England, who wasn’t invited, walks up the aisle and offers you his arm.</p></li>
+        <li class="poster p4"><span class="trope">Office power play</span><h3>Heir Apparent</h3><p>The new director humiliates you in front of everyone. Alone in the boardroom, he tells you your lunch order. Last summer, he was the intern you trained.</p></li>
+        <li class="poster p5"><span class="trope">Rejected mate</span><h3>Say It Back</h3><p>Your alpha rejects you in front of the whole pack. In this world, it isn’t finished until you say it back. You don’t.</p></li>
+        <li class="poster p6"><span class="trope">Hotel ghost</span><h3>Unregistered</h3><p>Nobody in a grand New Orleans hotel can see you. Tonight you ring the night manager’s bell, and he looks right at you.</p></li>
+        <li class="poster p7"><span class="trope">Villainess</span><h3>Little Knives</h3><p>You wake up as the villainess of a webtoon you used to hate-comment on, ten days before she loses everything.</p></li>
+        <li class="poster p8"><span class="trope">Hockey</span><h3>Ice Time</h3><p>He ends it in front of his whole team at five in the morning. His captain crosses the ice, hands you your whistle, and asks what you want.</p></li>
+      </ul>
     </section>
 
-    <section class="questions wrap section" aria-labelledby="questions-title">
-      <div><p class="eyebrow">Before you step inside</p><h2 id="questions-title">A little more<br><em>about our world.</em></h2></div>
+    <section class="questions wrap" id="questions" aria-labelledby="questions-title">
+      <h2 id="questions-title">Before you step inside.</h2>
       <div class="faq-list">
-        <details><summary>Can I try Worlds with You yet?<span aria-hidden="true">+</span></summary><p>We’re developing the first experience. There’s no public release or announced launch date yet. For product questions or partnership enquiries, contact <a href="mailto:support@worldswithyou.com">support@worldswithyou.com</a>.</p></details>
-        <details><summary>Who is it for?<span aria-hidden="true">+</span></summary><p>Worlds with You is being created for adults aged 18 and over who enjoy cinematic stories, interactive romance, and character-driven fiction. All romanceable characters are adults.</p></details>
-        <details><summary>How does AI fit into the experience?<span aria-hidden="true">+</span></summary><p>We’re combining authored story moments with AI-generated character dialogue. Conversations are designed to reflect each character’s personality and what they know about your story, including the choices you’ve made.</p></details>
-        <details><summary>Are the characters real people?<span aria-hidden="true">+</span></summary><p>No. The worlds, stories, and characters are fiction. Worlds with You is an entertainment experience, and we make that distinction clear.</p></details>
-        <details><summary>How do you approach responsible storytelling?<span aria-hidden="true">+</span></summary><p>Our development principles include an adult audience, clear fictional framing, character boundaries, and content review. Read our <a href="privacy/">Privacy Policy</a> and <a href="terms/">Terms of Service</a>.</p></details>
+        <details><summary>Can I play yet?</summary><p>Not yet. We’re finishing the first worlds now, and there’s no public release date. <a href="#open">Ask for launch news</a> and we’ll send you one email when it opens.</p></details>
+        <details><summary>Who is it for?</summary><p>Adults 18 and over who love romance: short dramas, romance novels, otome and choice games. Every romanceable character is an adult.</p></details>
+        <details><summary>How does AI fit in?</summary><p>Each world’s film, choices, and story are authored and reviewed before release. In chat, characters’ replies are generated by AI, in their voice, from what has happened in your story, including the choices you made.</p></details>
+        <details><summary>Are the characters real people?</summary><p>No. Characters and stories are fictional. Their responses may be generated by AI. This experience is for adults.</p></details>
+        <details><summary>What happens to my chats?</summary><p>We send your messages to AI providers so characters can reply and remember. We don’t use your chats to train AI models, and we don’t sell your personal information. Read the <a href="privacy/">Privacy Policy</a> and <a href="terms/">Terms of Service</a>.</p></details>
       </div>
     </section>
 
-    <section class="contact wrap" id="contact" aria-labelledby="contact-title"><div><p class="eyebrow">Let’s start a conversation</p><h2 id="contact-title">There’s a world<br><em>of possibility.</em></h2><p>Partnerships, press, or a little curiosity.<br>We’d love to hear from you.</p></div><a class="contact-link" href="mailto:support@worldswithyou.com">support@worldswithyou.com <span aria-hidden="true">↗</span></a></section>
+    <section class="open" id="open" aria-labelledby="open-title">
+      <img class="open-art" src="assets/threshold.webp" alt="" width="1672" height="941" loading="lazy" decoding="async">
+      <div class="wrap open-inner">
+        <h2 id="open-title">Be there when the first door opens.</h2>
+        <p>Send us one email. We’ll write back once, when you can play.</p>
+        <a class="button" href="mailto:support@worldswithyou.com?subject=Tell%20me%20when%20Worlds%20with%20You%20opens&amp;body=Please%20send%20me%20one%20email%20when%20I%20can%20play.">Email me when it opens</a>
+        <p class="open-press">Press or partnerships: <a href="mailto:support@worldswithyou.com">support@worldswithyou.com</a></p>
+      </div>
+    </section>
   </main>
-  <footer class="site-footer wrap"><div><a class="wordmark" href="./">Worlds <em>with</em> You</a><p>A world from Exoself Systems.<br>© 2026 Exoself Systems. All rights reserved.</p></div><div class="footer-links"><a href="privacy/">Privacy</a><a href="terms/">Terms</a><a href="https://github.com/kavinstewart/worldswithyou">GitHub <span aria-hidden="true">↗</span></a><a href="mailto:support@worldswithyou.com">Contact <span aria-hidden="true">↗</span></a></div><p class="footer-note">Fictional worlds. Real imagination.<br>Intended for adults 18+.</p></footer>
+
+  <footer class="site-footer wrap">
+    <div><a class="wordmark" href="./">Worlds with You</a><p>A world from <a href="https://exoselfsystems.com/">Exoself Systems</a>, California.<br>© 2026 Exoself Systems. All rights reserved.</p></div>
+    <div class="footer-links"><a href="privacy/">Privacy</a><a href="terms/">Terms</a><a href="mailto:support@worldswithyou.com">Contact</a><a href="https://github.com/kavinstewart/worldswithyou">GitHub</a></div>
+    <p class="footer-note">For adults 18+. Characters and stories are fictional. Their responses may be generated by AI.</p>
+  </footer>
+  <script>
+    // Start the phone preview when it scrolls into view, so phone visitors see it from the first text.
+    (() => {
+      const phone = document.querySelector('.phone');
+      if (!phone || !('IntersectionObserver' in window)) return;
+      document.documentElement.classList.replace('no-js', 'js');
+      new IntersectionObserver((entries, observer) => {
+        if (entries.some(e => e.isIntersecting)) { phone.classList.add('play'); observer.disconnect(); }
+      }, { threshold: 0.35 }).observe(phone);
+    })();
+  </script>
 </body>
 </html>

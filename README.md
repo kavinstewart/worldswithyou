@@ -6,7 +6,9 @@ The public information website for Worlds with You, an interactive fiction produ
 
 ## Development
 
-The site uses semantic HTML, CSS, and locally served artwork. It has no JavaScript runtime, third-party tracking, web fonts, package dependencies, or application backend. Python 3.9+ runs the build and link checks.
+The site uses semantic HTML, CSS, and locally served artwork. The home page's interactive phone preview is pure CSS (radio inputs and `:has()`); a few lines of inline JavaScript only start it when it scrolls into view, and the page works without them. It has no third-party tracking, web fonts, package dependencies, or application backend. Python 3.9+ runs the build and link checks.
+
+The home page quotes the founder-approved *Not Jess* opening from `docs/content/wrong-number.md` in the private product repository. Keep the phone thread in sync with that script. The worlds shelf lists titles from the writers' room and says they may change.
 
 ```sh
 just serve   # Local preview: http://127.0.0.1:4173
