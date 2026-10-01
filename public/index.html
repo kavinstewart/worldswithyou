@@ -385,7 +385,11 @@ figure{margin:0}
   .moment{height:560svh;view-timeline:--moment block}
   .stage{position:sticky;top:0;height:100svh;overflow:hidden;
     --pw:min(304px, 100% - 64px); --ph:min(700px, 100svh - 72px); --iris:min(78vw, 56svh, 440px)}
-  .film{position:absolute;inset:0;height:auto;aspect-ratio:auto;
+  .film{position:absolute;inset:0;height:auto;aspect-ratio:auto;isolation:isolate}
+  /* the iris is a paper-coloured overlay with a hole, not a clip-path: WebKit sometimes clips
+     a composited video to the clip-path's bounding box, which flickers to a rectangle */
+  .film::after{content:"";position:absolute;left:50%;top:50%;z-index:3;width:100%;height:100%;
+    transform:translate(-50%,-50%);box-shadow:0 0 0 100vmax var(--paper);pointer-events:none;
     animation:iris linear both;animation-timeline:--moment;animation-range:contain 5% contain 30%}
   .film-title,.film .pp{animation:fade-out linear both;animation-timeline:--moment;animation-range:contain 3% contain 13%}
   .moment .phone-wrap{position:absolute;inset:0;margin:0;width:auto;display:grid;place-items:center}
@@ -396,6 +400,10 @@ figure{margin:0}
   .moment .phone-label.top{top:calc(50% - var(--ph)/2 - 30px);font-size:.875rem}
   .moment .thread{overflow:hidden;justify-content:flex-end}
   .moment .thread > :first-child{margin-top:0}
+  /* the chosen reply is part of the history: it retracts on the way back up, just before the choices */
+  .moment .outs{flex:none;overflow:hidden;animation:outs-in linear both;animation-timeline:--moment;
+    animation-range:contain 83% contain 85%}
+  @keyframes outs-in{from{max-height:0;opacity:0}to{max-height:40em;opacity:1}}
   .moment .ph-head{animation:fade-in linear both;animation-timeline:--moment;animation-range:contain 30% contain 33%}
   .moment .thread > .row{animation:arrive linear both;animation-timeline:--moment;
     animation-range:contain var(--at) contain calc(var(--at) + 2.5%)}
@@ -409,9 +417,9 @@ figure{margin:0}
   .moment .sheet{animation:say-in linear both;animation-timeline:--moment;animation-range:contain 85% contain 91%}
   @keyframes say-in{from{max-height:0;opacity:0;overflow:hidden}to{max-height:60em;opacity:1;overflow:visible}}
   @keyframes iris{
-    0%{clip-path:inset(0 0 0 0 round 0)}
-    48%{clip-path:inset(calc(50% - var(--iris)/2) calc(50% - var(--iris)/2) round 50%)}
-    100%{clip-path:inset(calc(50% - var(--ph)/2) calc(50% - var(--pw)/2) round var(--r-device))}
+    0%{width:100%;height:100%;border-radius:0}
+    48%{width:var(--iris);height:var(--iris);border-radius:calc(var(--iris)/2)}
+    100%{width:var(--pw);height:var(--ph);border-radius:var(--r-device)}
   }
   @keyframes fade-out{to{opacity:0;visibility:hidden}}
   @keyframes fade-in{from{opacity:0}to{opacity:1}}
@@ -786,7 +794,19 @@ figure{margin:0}
     const toEnd = () => { if (scrolls) thread.scrollTop = thread.scrollHeight; };
     if (scrolls) { thread.tabIndex = 0; toEnd(); new ResizeObserver(toEnd).observe(form.querySelector('.outs')); }
     form.addEventListener('change', () => { form.querySelector('.again').focus({ preventScroll: true }); toEnd(); });
-    form.addEventListener('reset', () => setTimeout(() => { form.querySelector('input').focus({ preventScroll: true }); toEnd(); }));
+    form.addEventListener('reset', () => setTimeout(() => { if (!rewinding) form.querySelector('input').focus({ preventScroll: true }); toEnd(); }));
+    // Scrolled back above the choice: the reply has retracted, so forget the choice and ask again.
+    const outs = form.querySelector('.outs');
+    let rewinding = false, queued = false;
+    addEventListener('scroll', () => {
+      if (queued) return; queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        if (form.querySelector('input:checked') && getComputedStyle(outs).maxHeight === '0px') {
+          rewinding = true; form.reset(); setTimeout(() => { rewinding = false; });
+        }
+      });
+    }, { passive: true });
   }
 })();
 </script>
